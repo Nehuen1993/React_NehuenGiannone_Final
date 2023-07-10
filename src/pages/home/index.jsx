@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProductos } from "../../datos/productos";
+import { getProductos } from "../../datos/firebase/firebase";
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import foto1   from "../../component/imagenes/aceiteMotor.jpg";

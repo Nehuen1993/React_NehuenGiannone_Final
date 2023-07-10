@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getClase } from "../../datos/productos";
+import { getClase } from "../../datos/firebase/firebase";
 import { Table } from 'react-bootstrap';
 import { Link, useParams} from "react-router-dom";
 
@@ -36,7 +36,7 @@ const ClaseFrenos = () => {
                      </Link>
                      </td>
                   <td>
-                    <img src={producto.imagen} alt={`Imagen ${producto.id + 1}`} />
+                  {producto.cantidad}
                   </td>
                   <td>{producto.precio}</td>
                 </tr>

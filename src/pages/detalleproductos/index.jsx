@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
-import { getProducto } from "../../datos/productos";
+import { getProducto } from "../../datos/firebase/firebase";
 import { useParams } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { ComprarContext } from "../../context/compra";
-import { CarritoList } from "../../component/carrito-list";
+
 
 
 
