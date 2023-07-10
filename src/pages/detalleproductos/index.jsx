@@ -3,11 +3,13 @@ import { getProducto } from "../../datos/firebase/firebase";
 import { useParams } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { ComprarContext } from "../../context/compra";
+import { NavLink } from "react-router-dom";
 
 
 
 
-const DetalleProducto = ( {list} ) => {
+
+const DetalleProducto = ( {} ) => {
   const {id} = useParams ();
   const [producto, setProducto] = useState ({});
   const { addProducto } = useContext(ComprarContext);
@@ -20,6 +22,9 @@ const DetalleProducto = ( {list} ) => {
   }, []);
 
   if (!producto) return <p>Espere por favor</p>
+
+  const agregarOn = producto.cantidad > 0;
+  const agregarOff = producto.cantidad === 0;
 
 
 return (
@@ -36,11 +41,16 @@ return (
     <li className="list-group-item">Cantidad: {producto.cantidad}</li>
     
   </ul>
-
-<button onClick={() => addProducto(producto)} className="btn btn-primary">Agregar al carrito</button>
- 
 </div>
-      </Card>
+
+</Card>
+{agregarOn && (
+<button onClick={() => addProducto(producto)} className="btn btn-primary">Agregar al carrito</button>
+ )}
+ {agregarOff && (
+<button className="btn btn-secondary">Producto sin Stock</button>
+
+ )}
     </>
   );
 };

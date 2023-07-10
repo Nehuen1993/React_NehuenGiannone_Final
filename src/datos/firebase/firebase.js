@@ -71,19 +71,28 @@ const getCarrito = async () => {
 
  export {getCarrito}
 
- const updateProducto = async (id, dato) => {
+ const updateProducto = async (producto) => {
     const db = getFirestore();
-    const docRef = doc(db, "items", id);
-    await updateDoc(docRef, dato);
+    const docRef = doc(db, "items", producto.id);
+    const cantidad = {...producto, cantidad: producto.cantidad -1}; 
+    await updateDoc(docRef, cantidad);
  }
 export {updateProducto}
+
+const sumarCantidad = async (producto) => {
+    const db = getFirestore();
+    const docRef = doc(db, "carrito", producto.nombre);
+    const cantidad = {...producto, cantidad: producto.cantidad +1}; 
+    await updateDoc(docRef, cantidad);
+ }
+export {sumarCantidad}
 
 const vaciarCarrito = async () => {   
     const db = getFirestore();
     const docsRef = collection(db, "carrito");
     const querySnapshot = await getDocs(docsRef);
   
-    window.location.reload()
+
     querySnapshot.forEach(async (doc) => {
       await deleteDoc(doc.ref);
     }); 

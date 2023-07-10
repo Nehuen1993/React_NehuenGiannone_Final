@@ -14,7 +14,6 @@ const CarritoList = () => {
     });
   
   }, []);
-
     return (
     
 <>
@@ -34,7 +33,7 @@ const CarritoList = () => {
                 <tr key={producto.id}>
               
                 <td>{producto.nombre}</td>
-                <td>{producto.cantidad}</td>
+                <td>{1}</td>
                 <td>{producto.precio}</td>
                 
               </tr>
@@ -44,7 +43,7 @@ const CarritoList = () => {
           </Table>
           
           <button onClick={() => finCompra()} className="btn btn-primary">Comprar Productos</button>
-          <td><button onClick={() => vaciarCarrito("carrito")} className="btn btn-primary">Vaciar carrito</button></td>
+          <button onClick={() => vaciarCarrito("carrito")} className="btn btn-dark">Vaciar carrito</button>
     
           </>
     )
