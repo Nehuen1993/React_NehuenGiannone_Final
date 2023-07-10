@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProductos } from "../../datos/firebase/firebase";
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import foto1   from "../../component/imagenes/aceiteMotor.jpg";
+
 
 
 
@@ -25,7 +25,8 @@ const ProductList = () => {
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Imagen</th>
+            <th>Clase</th>
+            <th>Cantidad</th>
             <th>Precio</th>
           </tr>
         </thead>
@@ -37,8 +38,13 @@ const ProductList = () => {
                  {producto.nombre}
                  </Link>
                  </td>
+                 <td>
+                
+                 {producto.clase}
+                 
+                 </td>
               <td>
-                <img src={foto1} alt={`Imagen ${producto.id + 1}`} />
+              {producto.cantidad}
               </td>
               <td>{producto.precio}</td>
             </tr>

@@ -7,7 +7,7 @@ import { ComprarContext } from "../../context/compra";
 
 
 
-const DetalleProducto = ( {} ) => {
+const DetalleProducto = ( {list} ) => {
   const {id} = useParams ();
   const [producto, setProducto] = useState ({});
   const { addProducto } = useContext(ComprarContext);
@@ -27,7 +27,7 @@ return (
     <Card>
     <div className="card">
   <div className="card-header">
-    {producto.nombre}
+   <h1> {producto.nombre}</h1>
   </div>
   <ul className="list-group list-group-flush">
     <li className="list-group-item">{producto.img}</li>

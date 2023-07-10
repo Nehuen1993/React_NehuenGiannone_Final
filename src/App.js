@@ -6,7 +6,7 @@ import DetalleProducto, {  } from "./pages/detalleproductos";
 import ClaseMotor, {  } from "./pages/motor";
 import ClaseSuspencion, {  } from "./pages/suspencion";
 import ClaseFrenos, {  } from "./pages/frenos";
-import {CarritoListContainer} from "./pages/carrito-list-container";
+import {CarritoList} from "./pages/carrito";
 import ItemListContainer from './component/ItemListContainer';
 import { RiMotorbikeFill } from "react-icons/ri";
 import { ComprarProvider } from "./context/compra";
@@ -41,7 +41,7 @@ function App() {
           <Route path="/frenos" element={<ClaseFrenos/>}/>
           <Route path="/motor" element={<ClaseMotor/>}/>
           <Route path="/suspencion" element={<ClaseSuspencion/>}/>
-          <Route path="/carrito" element={<CarritoListContainer/>}/>
+          <Route path="/carrito" element={<CarritoList/>}/>
   
       </Routes>
       

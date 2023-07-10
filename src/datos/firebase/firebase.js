@@ -1,5 +1,5 @@
 
-import { collection, getDocs, doc, getDoc,  getFirestore, where, query } from "firebase/firestore";
+import { deleteDoc, updateDoc, addDoc, collection, getDocs, doc, getDoc,  getFirestore, where, query } from "firebase/firestore";
 
 
 
@@ -45,12 +45,50 @@ const getProductos = async () => {
 
  export {getClase}
 
-// export   const getClase = async (clase) => {
-//     return new Promise((resolve, reject) => {
-//         if (clase) {
-//             resolve (productos.filter((productos) => productos.clase === clase));
-//         } else {
-//             resolve (productos)
-//         }      
-//     });
-// };
+const sumarCarrito = async (dato) => {
+    const db = getFirestore();
+    const collectionRef = collection(db, "carrito");
+    const response = await addDoc(collectionRef, dato);
+
+    console.log (response)
+    
+}
+
+export {sumarCarrito}
+
+const getCarrito = async () => {
+    const db = getFirestore();
+    const docsRef = collection(db, "carrito");
+    const  snapshot = await getDocs(docsRef)
+
+    const productos = [];
+    snapshot.forEach((doc) => {
+    productos.push({ id: doc.id, ...doc.data() });
+    });
+  
+    return productos; 
+      };
+
+ export {getCarrito}
+
+ const updateProducto = async (id, dato) => {
+    const db = getFirestore();
+    const docRef = doc(db, "items", id);
+    await updateDoc(docRef, dato);
+ }
+export {updateProducto}
+
+const vaciarCarrito = async () => {   
+    const db = getFirestore();
+    const docsRef = collection(db, "carrito");
+    const querySnapshot = await getDocs(docsRef);
+  
+    window.location.reload()
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    }); 
+    await deleteDoc(collection(db, docsRef).parent);
+    
+}
+export {vaciarCarrito}
+

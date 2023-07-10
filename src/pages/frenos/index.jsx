@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getClase } from "../../datos/firebase/firebase";
 import { Table } from 'react-bootstrap';
-import { Link, useParams} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ClaseFrenos = () => {
     
@@ -23,7 +23,7 @@ const ClaseFrenos = () => {
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Imagen</th> 
+                <th>Cantidad</th> 
                 <th>Precio</th>
               </tr>
             </thead>

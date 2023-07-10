@@ -23,7 +23,7 @@ const ClaseMotor = () => {
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Imagen</th> 
+                <th>Cantidad</th> 
                 <th>Precio</th>
               </tr>
             </thead>
@@ -36,7 +36,7 @@ const ClaseMotor = () => {
                      </Link>
                      </td>
                   <td>
-                    <img src={producto.imagen} alt={`Imagen ${producto.id + 1}`} />
+                  {producto.cantidad}
                   </td>
                   <td>{producto.precio}</td>
                 </tr>
