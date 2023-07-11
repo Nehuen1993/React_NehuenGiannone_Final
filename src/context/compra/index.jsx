@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";  
-import { sumarCarrito, updateProducto, sumarCantidad} from "../../datos/firebase/firebase";
+import { addCarrito,  updateProducto, getOrden} from "../../datos/firebase/firebase";
 
 
 const ComprarContext = createContext();
@@ -9,13 +9,12 @@ const ComprarProvider = ({ children }) => {
     const [list, setList] = useState([]);
     const addProducto = (producto) => {
         setList([...list, producto]);
-        sumarCarrito(producto);
+        addCarrito(producto);
         updateProducto (producto);
-
-        
     }
 
-    const finCompra = () => {
+    const finCompra = (productos) => {
+        getOrden(productos);
         
         alert("Compra finalizada");
 

@@ -7,6 +7,7 @@ import { getCarrito, vaciarCarrito } from "../../datos/firebase/firebase";
 const CarritoList = () => {
   const [productos, setProductos] = useState([]);
   const { finCompra } = useContext(ComprarContext);
+  
 
   useEffect(() => {
     getCarrito().then((productos) => {
@@ -14,6 +15,7 @@ const CarritoList = () => {
     });
   
   }, []);
+
     return (
     
 <>
@@ -30,11 +32,14 @@ const CarritoList = () => {
             <tbody>
               {productos.map((producto) => (
                 
+                
                 <tr key={producto.id}>
-              
+                
+                
                 <td>{producto.nombre}</td>
-                <td>{1}</td>
+                <td>{producto.cantidadCarrito}</td>
                 <td>{producto.precio}</td>
+                <button onClick={() => vaciarCarrito("carrito", producto.id)} className="btn btn-dark">Eliminar del carrito</button>
                 
               </tr>
               ))}
@@ -42,8 +47,8 @@ const CarritoList = () => {
           </table>
           </Table>
           
-          <button onClick={() => finCompra()} className="btn btn-primary">Comprar Productos</button>
-          <button onClick={() => vaciarCarrito("carrito")} className="btn btn-dark">Vaciar carrito</button>
+          <button onClick={() => finCompra( "orden", "fz6cGfiKFe2OIGxnwiQR", productos)} className="btn btn-primary">Comprar Productos</button>
+          
     
           </>
     )
